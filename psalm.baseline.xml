@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files>
+  <file src="src\SprintfExceptionFactory.php">
+    <LessSpecificReturnStatement occurrences="1"/>
+    <MoreSpecificReturnType occurrences="1">
+      <code>InvalidArgumentException</code>
+    </MoreSpecificReturnType>
+  </file>
+</files>

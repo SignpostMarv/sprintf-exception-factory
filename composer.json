@@ -1,0 +1,41 @@
+{
+    "name": "signpostmarv/sprintf-exception-factory",
+    "description": "Generate exceptions without overriding the exception constructor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SignpostMarv",
+            "email": "me@signpostmarv.name"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SignpostMarv\\SprintfExceptionFactory\\": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SignpostMarv\\SprintfExceptionFactory\\Tests\\": "./Tests/"
+        }
+    },
+    "config": {
+        "classmap-authoritative": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "tests": [
+            "phpunit",
+            "psalm",
+            "php-cs-fixer fix --verbose --dry-run"
+        ]
+    },
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "psalm/plugin-phpunit": "^0.3.0",
+        "signpostmarv/php-cs-fixer-config": "^0.6.1",
+        "vimeo/psalm": "^3.0"
+    }
+}
