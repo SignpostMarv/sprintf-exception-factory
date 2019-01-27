@@ -66,6 +66,13 @@ abstract class SprintfExceptionFactory
         );
     }
 
+    /**
+    * Since we pass null to static::InvalidArgumentException($type) then
+    *  static::Exception() receives class-string<InvalidArgumentException> by default,
+    *  so @throws is only a technicality.
+    *
+    * @throws InvalidArgumentException but not really
+    */
     public static function ExpectArgumentIsException(
         string $type,
         string $expected,
