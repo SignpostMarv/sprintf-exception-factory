@@ -16,6 +16,8 @@ abstract class SprintfExceptionFactory
     * @param class-string<Exception>|null $type
     * @param class-string<Exception> $expected
     * @param scalar ...$args
+    *
+    * @throws InvalidArgumentException if $type is not an implementation of $expected
     */
     public static function Exception(
         string $type = null,
@@ -44,6 +46,8 @@ abstract class SprintfExceptionFactory
     /**
     * @param class-string<InvalidArgumentException>|null $type
     * @param scalar ...$args
+    *
+    * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
     */
     public static function InvalidArgumentException(
         string $type = null,
