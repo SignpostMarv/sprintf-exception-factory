@@ -74,7 +74,7 @@ abstract class SprintfExceptionFactory
         int $code = 0,
         Throwable $previous = null
     ) : InvalidArgumentException {
-        throw static::InvalidArgumentException(
+        return static::InvalidArgumentException(
             null,
             $code,
             $previous,
