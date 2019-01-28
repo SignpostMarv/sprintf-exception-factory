@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
-  <file src="src\SprintfExceptionFactory.php">
-    <LessSpecificReturnStatement occurrences="1"/>
-    <MoreSpecificReturnType occurrences="1">
-      <code>InvalidArgumentException</code>
-    </MoreSpecificReturnType>
+  <file src="Tests\SprintfExceptionFactoryTest.php">
+    <MixedArgument occurrences="1">
+      <code>$result</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$result</code>
+      <code>$result</code>
+    </MixedAssignment>
   </file>
 </files>
