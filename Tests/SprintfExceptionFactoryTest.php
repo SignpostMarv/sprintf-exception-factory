@@ -98,8 +98,6 @@ class SprintfExceptionFactoryTest extends TestCase
             ...$args
         );
 
-        static::assertInstanceOf(InvalidArgumentException::class, $result);
-
         if (InvalidArgumentException::class !== $type) {
             static::assertInstanceOf($type, $result);
         }
