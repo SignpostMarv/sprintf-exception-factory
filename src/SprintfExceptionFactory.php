@@ -13,9 +13,13 @@ use Throwable;
 abstract class SprintfExceptionFactory
 {
     /**
-    * @param class-string<Exception>|null $type
-    * @param class-string<Exception> $expected
+    * @template T as Exception
+    *
+    * @param T::class|null $type
+    * @param T::class $expected
     * @param scalar ...$args
+    *
+    * @return T
     *
     * @throws InvalidArgumentException if $type is not an implementation of $expected
     */
@@ -27,7 +31,7 @@ abstract class SprintfExceptionFactory
         string $sprintf = '%s',
         ...$args
     ) : Exception {
-        $type = $type ?: Exception::class;
+        $type = $type ?? Exception::class;
 
         if ($type !== $expected && ! is_a($type, $expected, true)) {
             throw static::ExpectArgumentIsException(
@@ -44,8 +48,12 @@ abstract class SprintfExceptionFactory
     }
 
     /**
-    * @param class-string<InvalidArgumentException>|null $type
+    * @template T as InvalidArgumentException
+    *
+    * @param T::class|null $type
     * @param scalar ...$args
+    *
+    * @return T
     *
     * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
     */
@@ -57,7 +65,7 @@ abstract class SprintfExceptionFactory
         ...$args
     ) : InvalidArgumentException {
         return static::Exception(
-            $type ?: InvalidArgumentException::class,
+            $type ?? InvalidArgumentException::class,
             $code,
             $previous,
             InvalidArgumentException::class,
@@ -82,7 +90,7 @@ abstract class SprintfExceptionFactory
         Throwable $previous = null
     ) : InvalidArgumentException {
         return static::InvalidArgumentException(
-            null,
+            InvalidArgumentException::class,
             $code,
             $previous,
             'Argument %u passed to %s() must be an implementation of %s, %s given!',
