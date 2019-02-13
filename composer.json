@@ -36,6 +36,6 @@
         "phpunit/phpunit": "^6.5",
         "psalm/plugin-phpunit": "^0.3.0",
         "signpostmarv/php-cs-fixer-config": "^0.6.1",
-        "vimeo/psalm": "dev-master"
+        "vimeo/psalm": "^3.0"
     }
 }

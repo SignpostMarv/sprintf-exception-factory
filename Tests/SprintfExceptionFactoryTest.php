@@ -72,10 +72,6 @@ class SprintfExceptionFactoryTest extends TestCase
             ...$args
         );
 
-        if (InvalidArgumentException::class !== $type) {
-            static::assertInstanceOf($type, $result);
-        }
-
         static::PerformAssertions(
             $result,
             $previous,
@@ -97,10 +93,6 @@ class SprintfExceptionFactoryTest extends TestCase
             $sprintf,
             ...$args
         );
-
-        if (InvalidArgumentException::class !== $type) {
-            static::assertInstanceOf($type, $result);
-        }
 
         static::PerformAssertions(
             $result,
