@@ -21,6 +21,7 @@ abstract class SprintfExceptionFactory
     *
     * @psalm-param T::class|null $type
     * @psalm-param T::class $expected
+    *
     * @param scalar ...$args
     *
     * @throws InvalidArgumentException if $type is not an implementation of $expected
@@ -55,6 +56,7 @@ abstract class SprintfExceptionFactory
     * @template T as InvalidArgumentException
     *
     * @psalm-param T::class|null $type
+    *
     * @param scalar ...$args
     *
     * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation

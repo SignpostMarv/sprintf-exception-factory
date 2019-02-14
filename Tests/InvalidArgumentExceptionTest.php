@@ -47,6 +47,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     /**
     * @psalm-param class-string<InvalidArgumentException> $type
     * @psalm-param class-string<Throwable>|null $previousType
+    *
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentException
@@ -110,6 +111,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     /**
     * @psalm-param class-string<InvalidArgumentException> $type
     * @psalm-param class-string<Throwable>|null $previousType
+    *
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentExceptionBad

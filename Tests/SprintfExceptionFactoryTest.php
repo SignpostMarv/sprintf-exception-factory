@@ -59,6 +59,7 @@ class SprintfExceptionFactoryTest extends TestCase
     /**
     * @psalm-param class-string<Exception> $type
     * @psalm-param class-string<Throwable>|null $previousType
+    *
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentException
@@ -105,6 +106,7 @@ class SprintfExceptionFactoryTest extends TestCase
     /**
     * @psalm-param class-string<Throwable> $type
     * @psalm-param class-string<Throwable>|null $previousType
+    *
     * @param array<int, scalar> $args
     */
     protected function PerformAssertions(
