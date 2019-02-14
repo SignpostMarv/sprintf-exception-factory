@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace SignpostMarv\SprintfExceptionFactory\Tests;
 
 use Exception;
-use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use SignpostMarv\SprintfExceptionFactory\SprintfExceptionFactory;
@@ -97,7 +96,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
-        if ($type !== Throwable::class) {
+        if (Throwable::class !== $type) {
             static::assertInstanceOf($type, $result);
         }
         static::assertSame($expectedMessage, $result->getMessage());
