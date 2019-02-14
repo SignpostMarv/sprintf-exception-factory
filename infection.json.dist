@@ -33,12 +33,6 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
             ]
         },
-        "ProtectedVisibility": {
-            "ignore": [
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MaybeObtainThrowable",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
-            ]
-        },
         "PublicVisibility": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
@@ -47,11 +41,6 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException"
-            ]
-        },
-        "TrueValue": {
-            "ignore": [
-                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
             ]
         }
     }

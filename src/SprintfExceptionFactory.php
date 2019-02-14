@@ -14,6 +14,8 @@ abstract class SprintfExceptionFactory
 {
     const DEFAULT_INT_CODE = 0;
 
+    const IS_A_STRINGS = true;
+
     /**
     * @template T as Exception
     *
@@ -35,7 +37,7 @@ abstract class SprintfExceptionFactory
     ) : Exception {
         $type = $type ?? Exception::class;
 
-        if ($type !== $expected && ! is_a($type, $expected, true)) {
+        if ($type !== $expected && ! is_a($type, $expected, self::IS_A_STRINGS)) {
             throw static::ExpectArgumentIsException(
                 $type,
                 $expected,
@@ -46,7 +48,7 @@ abstract class SprintfExceptionFactory
             );
         }
 
-        return new $type(sprintf($sprintf, ...$args));
+        return new $type(sprintf($sprintf, ...$args), $code, $previous);
     }
 
     /**

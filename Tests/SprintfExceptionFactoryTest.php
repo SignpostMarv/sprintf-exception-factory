@@ -30,6 +30,18 @@ class SprintfExceptionFactoryTest extends TestCase
                     'bar',
                 ],
                 SprintfExceptionFactory::DEFAULT_INT_CODE,
+                Exception::class,
+                'baz',
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
+            ],
+            [
+                'foo bar',
+                InvalidArgumentException::class,
+                'foo %s',
+                [
+                    'bar',
+                ],
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
                 null,
                 '',
                 SprintfExceptionFactory::DEFAULT_INT_CODE,
@@ -55,6 +67,10 @@ class SprintfExceptionFactoryTest extends TestCase
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
+
+        if (is_null($previousType)) {
+            static::assertNull($previous);
+        }
 
         $result = SprintfExceptionFactory::Exception(
             $type,
@@ -105,9 +121,10 @@ class SprintfExceptionFactoryTest extends TestCase
 
         $resultPrevious = $result->getPrevious();
 
-        static::assertSame($expectedPrevious, $resultPrevious);
+        static::assertSame(gettype($expectedPrevious), gettype($resultPrevious));
 
         if ( ! is_null($previousType)) {
+            static::assertInstanceOf($previousType, $expectedPrevious);
             static::assertInstanceOf($previousType, $resultPrevious);
         } else {
             static::assertNull($resultPrevious);
