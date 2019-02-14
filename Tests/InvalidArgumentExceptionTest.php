@@ -6,10 +6,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\SprintfExceptionFactory\Tests;
 
-use Exception;
-use Generator;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use SignpostMarv\SprintfExceptionFactory\SprintfExceptionFactory;
 use Throwable;
 
