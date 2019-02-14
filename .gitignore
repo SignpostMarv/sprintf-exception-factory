@@ -2,3 +2,4 @@
 /coverage/
 /.php_cs.cache
 /infection.log
+/phpunit.cache
