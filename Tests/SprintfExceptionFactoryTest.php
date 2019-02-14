@@ -38,18 +38,6 @@ class SprintfExceptionFactoryTest extends TestCase
         ];
     }
 
-    public function DataProviderInvalidArgumentExceptionBad() : Generator
-    {
-        yield from array_map(
-            function (array $args) : array {
-                $args[self::ARG_SECOND] = Exception::class;
-
-                return $args;
-            },
-            $this->DataProviderInvalidArgumentException()
-        );
-    }
-
     /**
     * @param class-string<Exception> $type
     * @param class-string<Throwable>|null $previousType
@@ -109,7 +97,11 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
+        if ($type !== Throwable::class) {
+            static::assertInstanceOf($type, $result);
+        }
         static::assertSame($expectedMessage, $result->getMessage());
+        static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
         static::assertSame($code, $result->getCode());
 
         $resultPrevious = $result->getPrevious();

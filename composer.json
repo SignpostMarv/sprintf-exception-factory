@@ -26,7 +26,7 @@
         "tests": [
             "phpunit",
             "infection --min-msi=100",
-            "psalm",
+            "psalm --find-dead-code",
             "phpcpd -vvv ./src/ ./Tests/",
             "php-cs-fixer fix --verbose --dry-run"
         ]

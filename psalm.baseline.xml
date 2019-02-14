@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files/>
+<files>
+  <file src="Tests\InvalidArgumentExceptionTest.php">
+    <PossiblyUnusedMethod occurrences="2">
+      <code>public function DataProviderInvalidArgumentExceptionBad() : Generator</code>
+      <code>public function testInvalidArgumentException(</code>
+    </PossiblyUnusedMethod>
+    <TypeCoercion occurrences="1">
+      <code>Exception::class</code>
+    </TypeCoercion>
+  </file>
+  <file src="Tests\SprintfExceptionFactoryTest.php">
+    <RedundantCondition occurrences="1">
+      <code>assertInstanceOf</code>
+    </RedundantCondition>
+  </file>
+</files>

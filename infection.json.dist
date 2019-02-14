@@ -22,9 +22,15 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
             ]
         },
+        "NotIdentical": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+            ]
+        },
         "NotIdenticalNotEqual": {
             "ignore": [
-                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
             ]
         },
         "ProtectedVisibility": {
@@ -37,7 +43,7 @@
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentExceptionBad",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException"

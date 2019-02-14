@@ -6,12 +6,26 @@ declare(strict_types=1);
 
 namespace SignpostMarv\SprintfExceptionFactory\Tests;
 
+use Exception;
+use Generator;
 use InvalidArgumentException;
 use SignpostMarv\SprintfExceptionFactory\SprintfExceptionFactory;
 use Throwable;
 
 class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 {
+    public function DataProviderInvalidArgumentExceptionBad() : Generator
+    {
+        yield from array_map(
+            function (array $args) : array {
+                $args[self::ARG_SECOND] = Exception::class;
+
+                return $args;
+            },
+            $this->DataProviderInvalidArgumentException()
+        );
+    }
+
     /**
     * @param class-string<InvalidArgumentException> $type
     * @param class-string<Throwable>|null $previousType
@@ -51,6 +65,28 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
             $previousMessage,
             $previousCode
         );
+
+        $this->testException(
+            $expectedMessage,
+            $type,
+            $sprintf,
+            $args,
+            $code,
+            $previousType,
+            $previousMessage,
+            $previousCode
+        );
+
+        $this->testInvalidArgumentExceptionFails(
+            $expectedMessage,
+            Exception::class,
+            $sprintf,
+            $args,
+            $code,
+            $previousType,
+            $previousMessage,
+            $previousCode
+        );
     }
 
     /**
@@ -72,6 +108,8 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     ) {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
+        static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
+
         static::expectException(InvalidArgumentException::class);
         static::expectExceptionMessage(
             'Argument 1 passed to ' .
@@ -83,7 +121,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
             ' given!'
         );
 
-        $result = SprintfExceptionFactory::InvalidArgumentException(
+        SprintfExceptionFactory::InvalidArgumentException(
             $type,
             $code,
             $previous,
