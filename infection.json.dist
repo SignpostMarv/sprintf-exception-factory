@@ -1,0 +1,51 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "Tests",
+            "src"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "LogicalAnd": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
+            ]
+        },
+        "LogicalNot": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MaybeObtainThrowable",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+            ]
+        },
+        "NotIdenticalNotEqual": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
+            ]
+        },
+        "ProtectedVisibility": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MaybeObtainThrowable",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+            ]
+        },
+        "PublicVisibility": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentExceptionBad",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testInvalidArgumentExceptionFails",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testInvalidArgumentException"
+            ]
+        },
+        "TrueValue": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
+            ]
+        }
+    }
+}

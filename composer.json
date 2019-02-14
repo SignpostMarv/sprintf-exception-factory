@@ -25,6 +25,7 @@
     "scripts": {
         "tests": [
             "phpunit",
+            "infection --min-msi=100",
             "psalm",
             "phpcpd -vvv ./src/ ./Tests/",
             "php-cs-fixer fix --verbose --dry-run"
@@ -37,6 +38,7 @@
         "php": "^7.0,<7.4"
     },
     "require-dev": {
+        "infection/infection": "^0.9.3",
         "phpunit/phpunit": "^6.5",
         "psalm/plugin-phpunit": "^0.4.1",
         "sebastian/phpcpd": "^3.0",

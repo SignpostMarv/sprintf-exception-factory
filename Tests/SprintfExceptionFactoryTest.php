@@ -15,6 +15,8 @@ use Throwable;
 
 class SprintfExceptionFactoryTest extends TestCase
 {
+    const ARG_SECOND = 1;
+
     /**
     * @return array<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
     */
@@ -28,21 +30,24 @@ class SprintfExceptionFactoryTest extends TestCase
                 [
                     'bar',
                 ],
-                0,
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
                 null,
                 '',
-                0,
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
             ],
         ];
     }
 
     public function DataProviderInvalidArgumentExceptionBad() : Generator
     {
-        foreach ($this->DataProviderInvalidArgumentException() as $args) {
-            $args[1] = Exception::class;
+        yield from array_map(
+            function (array $args) : array {
+                $args[self::ARG_SECOND] = Exception::class;
 
-            yield $args;
-        }
+                return $args;
+            },
+            $this->DataProviderInvalidArgumentException()
+        );
     }
 
     /**
@@ -57,10 +62,10 @@ class SprintfExceptionFactoryTest extends TestCase
         string $type,
         string $sprintf,
         array $args,
-        int $code = 0,
+        int $code = SprintfExceptionFactory::DEFAULT_INT_CODE,
         string $previousType = null,
         string $previousMessage = '',
-        int $previousCode = 0
+        int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
@@ -120,10 +125,10 @@ class SprintfExceptionFactoryTest extends TestCase
         string $type,
         string $sprintf,
         array $args,
-        int $code = 0,
+        int $code = SprintfExceptionFactory::DEFAULT_INT_CODE,
         string $previousType = null,
         string $previousMessage = '',
-        int $previousCode = 0
+        int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
@@ -159,10 +164,10 @@ class SprintfExceptionFactoryTest extends TestCase
         string $type = Throwable::class,
         string $sprintf = '%s',
         array $args = [''],
-        int $code = 0,
+        int $code = SprintfExceptionFactory::DEFAULT_INT_CODE,
         string $previousType = null,
         string $previousMessage = '',
-        int $previousCode = 0
+        int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
         static::assertSame($expectedMessage, $result->getMessage());
         static::assertSame($code, $result->getCode());
@@ -192,7 +197,7 @@ class SprintfExceptionFactoryTest extends TestCase
     protected static function MaybeObtainThrowable(
         string $previousType = null,
         string $previousMessage = '',
-        int $previousCode = 0
+        int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
         $previous = null;
 

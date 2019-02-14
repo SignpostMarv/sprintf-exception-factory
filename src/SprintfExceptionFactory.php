@@ -12,6 +12,8 @@ use Throwable;
 
 abstract class SprintfExceptionFactory
 {
+    const DEFAULT_INT_CODE = 0;
+
     /**
     * @template T as Exception
     *
@@ -25,7 +27,7 @@ abstract class SprintfExceptionFactory
     */
     public static function Exception(
         string $type = null,
-        int $code = 0,
+        int $code = self::DEFAULT_INT_CODE,
         Throwable $previous = null,
         string $expected = Exception::class,
         string $sprintf = '%s',
@@ -59,7 +61,7 @@ abstract class SprintfExceptionFactory
     */
     public static function InvalidArgumentException(
         string $type = null,
-        int $code = 0,
+        int $code = self::DEFAULT_INT_CODE,
         Throwable $previous = null,
         string $sprintf = '%s',
         ...$args
@@ -86,7 +88,7 @@ abstract class SprintfExceptionFactory
         string $expected,
         int $argument,
         string $method,
-        int $code = 0,
+        int $code = self::DEFAULT_INT_CODE,
         Throwable $previous = null
     ) : InvalidArgumentException {
         return static::InvalidArgumentException(
