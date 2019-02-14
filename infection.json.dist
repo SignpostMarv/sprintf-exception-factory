@@ -38,8 +38,9 @@
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentExceptionBad",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testInvalidArgumentExceptionFails",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testInvalidArgumentException"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException"
             ]
         },
         "TrueValue": {
