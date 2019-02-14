@@ -1,0 +1,32 @@
+build:
+    nodes:
+        php70:
+            environment:
+                php: 7.0
+        php71:
+            environment:
+                php: 7.1
+        php72:
+            environment:
+                php: 7.2
+        php73:
+            environment:
+                php: 7.3
+        analysis:
+            project_setup:
+                override:
+                    - 'true'
+            tests:
+                override:
+                    - php-scrutinizer-run
+    tests:
+        override:
+            -
+                command: 'composer run tests'
+                coverage:
+                    file: './coverage/phpunit.clover'
+                    format: 'clover'
+checks:
+    php:
+        code_rating: true
+        duplication: false
