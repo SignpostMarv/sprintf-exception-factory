@@ -11,6 +11,12 @@
     },
     "mutators": {
         "@default": true,
+        "Foreach_": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException"
+            ]
+        },
         "LogicalAnd": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
@@ -36,11 +42,13 @@
         "PublicVisibility": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException"
             ]
         }
     }

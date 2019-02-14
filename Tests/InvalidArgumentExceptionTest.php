@@ -14,9 +14,17 @@ use Throwable;
 
 class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 {
+    /**
+    * @return Generator<int, array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+    */
     public function DataProviderInvalidArgumentExceptionBad() : Generator
     {
         yield from array_map(
+            /**
+            * @param array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int} $args
+            *
+            * @return array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
+            */
             function (array $args) : array {
                 $args[self::ARG_SECOND] = Exception::class;
 
@@ -24,6 +32,16 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
             },
             $this->DataProviderInvalidArgumentException()
         );
+    }
+
+    public function test_Paranoid_DataProviderInvalidArgumentExceptionBad()
+    {
+        $good = $this->DataProviderInvalidArgumentException();
+
+        foreach ($this->DataProviderInvalidArgumentExceptionBad() as $i => $args) {
+            static::assertInternalType('array', $args);
+            static::assertNotSame($args[self::ARG_SECOND], $good[$i][self::ARG_SECOND]);
+        }
     }
 
     /**
@@ -95,6 +113,8 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentExceptionBad
+    *
+    * @depends test_Paranoid_DataProviderInvalidArgumentExceptionBad
     */
     public function testInvalidArgumentExceptionFails(
         string $expectedMessage,
