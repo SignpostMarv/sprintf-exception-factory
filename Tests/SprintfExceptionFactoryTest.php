@@ -17,7 +17,7 @@ class SprintfExceptionFactoryTest extends TestCase
     const ARG_SECOND = 1;
 
     /**
-    * @return array<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
+    * @psalm-return array<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
     */
     public function DataProviderInvalidArgumentException() : array
     {
@@ -57,8 +57,8 @@ class SprintfExceptionFactoryTest extends TestCase
     }
 
     /**
-    * @param class-string<Exception> $type
-    * @param class-string<Throwable>|null $previousType
+    * @psalm-param class-string<Exception> $type
+    * @psalm-param class-string<Throwable>|null $previousType
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentException
@@ -103,8 +103,8 @@ class SprintfExceptionFactoryTest extends TestCase
     }
 
     /**
-    * @param class-string<Throwable> $type
-    * @param class-string<Throwable>|null $previousType
+    * @psalm-param class-string<Throwable> $type
+    * @psalm-param class-string<Throwable>|null $previousType
     * @param array<int, scalar> $args
     */
     protected function PerformAssertions(
@@ -145,7 +145,7 @@ class SprintfExceptionFactoryTest extends TestCase
     }
 
     /**
-    * @param class-string<Throwable>|null $previousType
+    * @psalm-param class-string<Throwable>|null $previousType
     *
     * @return Throwable|null
     */

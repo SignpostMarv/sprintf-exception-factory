@@ -15,15 +15,15 @@ use Throwable;
 class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 {
     /**
-    * @return Generator<int, array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+    * @psalm-return Generator<int, array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
     */
     public function DataProviderInvalidArgumentExceptionBad() : Generator
     {
         yield from array_map(
             /**
-            * @param array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int} $args
+            * @psalm-param array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int} $args
             *
-            * @return array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
+            * @psalm-return array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
             */
             function (array $args) : array {
                 $args[self::ARG_SECOND] = Exception::class;
@@ -45,8 +45,8 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     }
 
     /**
-    * @param class-string<InvalidArgumentException> $type
-    * @param class-string<Throwable>|null $previousType
+    * @psalm-param class-string<InvalidArgumentException> $type
+    * @psalm-param class-string<Throwable>|null $previousType
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentException
@@ -108,8 +108,8 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
     }
 
     /**
-    * @param class-string<InvalidArgumentException> $type
-    * @param class-string<Throwable>|null $previousType
+    * @psalm-param class-string<InvalidArgumentException> $type
+    * @psalm-param class-string<Throwable>|null $previousType
     * @param array<int, scalar> $args
     *
     * @dataProvider DataProviderInvalidArgumentExceptionBad
