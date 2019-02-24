@@ -28,6 +28,8 @@
             "infection --min-msi=100",
             "psalm --find-dead-code",
             "phpcpd -vvv ./src/ ./Tests/",
+            "phpmnd ./ --exclude-path=./vendor/ --exclude-path=./coverage/",
+            "composer-require-checker check ./composer.json",
             "php-cs-fixer fix --verbose --dry-run"
         ]
     },
@@ -35,15 +37,17 @@
         "vimeo/psalm": "Needed to pick up static type hints for method input"
     },
     "require": {
-        "php": "^7.0,<7.4"
+        "php": "^7.1,<7.4"
     },
     "require-dev": {
-        "infection/infection": "^0.9.3",
-        "phpunit/phpunit": "^6.5",
+        "infection/infection": "^0.12.2",
+        "maglnet/composer-require-checker": "^1.1",
+        "phpunit/phpunit": "^7.5",
+        "povils/phpmnd": "^2.1",
         "psalm/plugin-phpunit": "^0.4.1",
         "roave/security-advisories": "dev-master",
-        "sebastian/phpcpd": "^3.0",
-        "signpostmarv/php-cs-fixer-config": "^0.6.2|^0.7|^0.8",
+        "sebastian/phpcpd": "^4.1",
+        "signpostmarv/php-cs-fixer-config": "^0.9.0",
         "vimeo/psalm": "^3.0"
     }
 }

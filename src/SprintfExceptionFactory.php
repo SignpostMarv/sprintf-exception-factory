@@ -29,7 +29,7 @@ abstract class SprintfExceptionFactory
     * @return T
     */
     public static function Exception(
-        string $type = null,
+        ? string $type,
         int $code = self::DEFAULT_INT_CODE,
         Throwable $previous = null,
         string $expected = Exception::class,
@@ -64,7 +64,7 @@ abstract class SprintfExceptionFactory
     * @return T
     */
     public static function InvalidArgumentException(
-        string $type = null,
+        ? string $type,
         int $code = self::DEFAULT_INT_CODE,
         Throwable $previous = null,
         string $sprintf = '%s',

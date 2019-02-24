@@ -39,7 +39,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
         $good = $this->DataProviderInvalidArgumentException();
 
         foreach ($this->DataProviderInvalidArgumentExceptionBad() as $i => $args) {
-            static::assertInternalType('array', $args);
+            static::assertIsArray($args);
             static::assertNotSame($args[self::ARG_SECOND], $good[$i][self::ARG_SECOND]);
         }
     }

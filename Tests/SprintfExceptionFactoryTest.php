@@ -52,7 +52,7 @@ class SprintfExceptionFactoryTest extends TestCase
     public function test_Paranoid_DataProviderInvalidArgumentException()
     {
         foreach ($this->DataProviderInvalidArgumentException() as $args) {
-            static::assertInternalType('array', $args);
+            static::assertIsArray($args);
         }
     }
 
