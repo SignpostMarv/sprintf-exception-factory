@@ -8,6 +8,7 @@ namespace SignpostMarv\SprintfExceptionFactory;
 
 use Exception;
 use InvalidArgumentException;
+use RuntimeException;
 use Throwable;
 
 abstract class SprintfExceptionFactory
@@ -75,6 +76,34 @@ abstract class SprintfExceptionFactory
             $code,
             $previous,
             InvalidArgumentException::class,
+            $sprintf,
+            ...$args
+        );
+    }
+
+    /**
+    * @template T as RuntimeException
+    *
+    * @psalm-param T::class|null $type
+    *
+    * @param scalar ...$args
+    *
+    * @throws RuntimeException if $type is not an RuntimeException implementation
+    *
+    * @return T
+    */
+    public static function RuntimeException(
+        ? string $type,
+        int $code = self::DEFAULT_INT_CODE,
+        Throwable $previous = null,
+        string $sprintf = '%s',
+        ...$args
+    ) : RuntimeException {
+        return static::Exception(
+            $type ?? RuntimeException::class,
+            $code,
+            $previous,
+            RuntimeException::class,
             $sprintf,
             ...$args
         );

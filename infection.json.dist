@@ -11,19 +11,45 @@
     },
     "mutators": {
         "@default": true,
+        "BitwiseOr": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod"
+            ]
+        },
+        "Coalesce": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::RuntimeException"
+            ]
+        },
         "Foreach_": {
             "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException"
+            ]
+        },
+        "FunctionCallRemoval": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod"
+            ]
+        },
+        "Identical": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod"
             ]
         },
         "LogicalAnd": {
             "ignore": [
-                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception"
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::Exception",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod"
             ]
         },
         "LogicalNot": {
             "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MaybeObtainThrowable",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
             ]
@@ -35,7 +61,18 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testFactoryMethod"
+            ]
+        },
+        "NotIdentical": {
+            "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+            ]
+        },
+        "PregMatchMatches": {
+            "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod"
             ]
         },
         "ProtectedVisibility": {
@@ -51,9 +88,12 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testFactoryMethod"
             ]
         }
     }

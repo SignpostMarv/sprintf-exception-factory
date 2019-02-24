@@ -8,7 +8,11 @@ namespace SignpostMarv\SprintfExceptionFactory\Tests;
 
 use Exception;
 use InvalidArgumentException;
+use Generator;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
+use RuntimeException;
 use SignpostMarv\SprintfExceptionFactory\SprintfExceptionFactory;
 use Throwable;
 
@@ -16,10 +20,12 @@ class SprintfExceptionFactoryTest extends TestCase
 {
     const ARG_SECOND = 1;
 
+    const REGEX_MATCH = 1;
+
     /**
-    * @psalm-return array<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
+    * @psalm-return array<int, array{0:string, 1:class-string<\Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
     */
-    public function DataProviderInvalidArgumentException() : array
+    public function DataProviderException() : array
     {
         return [
             [
@@ -46,7 +52,36 @@ class SprintfExceptionFactoryTest extends TestCase
                 '',
                 SprintfExceptionFactory::DEFAULT_INT_CODE,
             ],
+            [
+                'foo bar',
+                RuntimeException::class,
+                'foo %s',
+                [
+                    'bar',
+                ],
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
+                null,
+                '',
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
+            ],
         ];
+    }
+
+    /**
+    * @psalm-return Generator<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+    */
+    public function DataProviderInvalidArgumentException() : Generator
+    {
+        foreach ($this->DataProviderException() as $args) {
+            if (is_a($args[self::ARG_SECOND], InvalidArgumentException::class, true)) {
+                /**
+                * @var array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
+                */
+                $args = $args;
+
+                yield $args;
+            }
+        }
     }
 
     public function test_Paranoid_DataProviderInvalidArgumentException()
@@ -84,7 +119,98 @@ class SprintfExceptionFactoryTest extends TestCase
             $type,
             $code,
             $previous,
-            InvalidArgumentException::class,
+            $type,
+            $sprintf,
+            ...$args
+        );
+
+        $this->PerformAssertions(
+            $result,
+            $previous,
+            $expectedMessage,
+            $type,
+            $sprintf,
+            $args,
+            $code,
+            $previousType,
+            $previousMessage,
+            $previousCode
+        );
+    }
+
+    public function DataProviderTestFactoryMethod() : Generator
+    {
+        $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
+
+        $methods = $factory_reflector->getMethods(
+            ReflectionMethod::IS_STATIC |
+            ReflectionMethod::IS_PUBLIC
+        );
+
+        $map_types = [];
+
+        foreach ($methods as $reflector) {
+            if (is_a($reflector->getName(), Throwable::class, true)) {
+                $docblock = $reflector->getDocComment();
+
+                if (
+                    is_string($docblock) &&
+                    self::REGEX_MATCH === preg_match(
+                        '/\* @throws ([^\ ]+).+[\r\n]/',
+                        $docblock,
+                        $matches
+                    ) &&
+                    $reflector->getName() === $matches[self::ARG_SECOND]
+                ) {
+                    $map_types[$matches[self::ARG_SECOND]] = $reflector;
+                }
+            }
+        }
+
+        unset($map_types[Exception::class]);
+
+        foreach ($this->DataProviderException() as $args) {
+            if (isset($map_types[$args[self::ARG_SECOND]])) {
+                array_unshift($args, $map_types[$args[self::ARG_SECOND]]);
+
+                yield $args;
+            }
+        }
+    }
+
+    /**
+    * @psalm-param class-string<Exception> $type
+    * @psalm-param class-string<Throwable>|null $previousType
+    *
+    * @param array<int, scalar> $args
+    *
+    * @dataProvider DataProviderTestFactoryMethod
+    */
+    public function testFactoryMethod(
+        ReflectionMethod $reflector,
+        string $expectedMessage,
+        string $type,
+        string $sprintf,
+        array $args,
+        int $code = SprintfExceptionFactory::DEFAULT_INT_CODE,
+        string $previousType = null,
+        string $previousMessage = '',
+        int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
+    ) {
+        $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
+
+        if (is_null($previousType)) {
+            static::assertNull($previous);
+        }
+
+        /**
+        * @var Throwable
+        */
+        $result = $reflector->invoke(
+            null,
+            $type,
+            $code,
+            $previous,
             $sprintf,
             ...$args
         );
@@ -121,6 +247,9 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
+        if ($type !== Throwable::class) {
+            static::assertInstanceOf($type, $result);
+        }
         static::assertSame($expectedMessage, $result->getMessage());
         static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
         static::assertSame($code, $result->getCode());

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
   <file src="Tests\InvalidArgumentExceptionTest.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>return $args;</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>@psalm-return array{0:string, 1:class-string&lt;Exception&gt;, 2:string, 3:array&lt;int, scalar&gt;, 4:int, 5:class-string&lt;Throwable&gt;|null, 6:string, 7:int}</code>
-    </MoreSpecificReturnType>
     <PossiblyUnusedMethod occurrences="2">
-      <code>public function test_Paranoid_DataProviderInvalidArgumentExceptionBad()</code>
+      <code>public function DataProviderInvalidArgumentExceptionBad() : Generator</code>
       <code>public function testInvalidArgumentException(</code>
     </PossiblyUnusedMethod>
     <TypeCoercion occurrences="1">
@@ -16,11 +10,18 @@
     </TypeCoercion>
   </file>
   <file src="Tests\SprintfExceptionFactoryTest.php">
-    <PossiblyUnusedMethod occurrences="1">
+    <PossiblyUnusedMethod occurrences="3">
       <code>public function test_Paranoid_DataProviderInvalidArgumentException()</code>
+      <code>public function DataProviderTestFactoryMethod() : Generator</code>
+      <code>public function testFactoryMethod(</code>
     </PossiblyUnusedMethod>
-    <PossiblyUnusedParam occurrences="1">
-      <code>$type</code>
-    </PossiblyUnusedParam>
+    <RedundantCondition occurrences="1">
+      <code>assertInstanceOf</code>
+    </RedundantCondition>
+  </file>
+  <file src="src\SprintfExceptionFactory.php">
+    <PossiblyUnusedMethod occurrences="1">
+      <code>public static function RuntimeException(</code>
+    </PossiblyUnusedMethod>
   </file>
 </files>
