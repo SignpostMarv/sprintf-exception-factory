@@ -138,48 +138,6 @@ class SprintfExceptionFactoryTest extends TestCase
         );
     }
 
-    /**
-    * @return array<class-string<Throwable>, ReflectionMethod>
-    */
-    protected static function MapTypesToReflectors() : array
-    {
-        $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
-
-        $methods = $factory_reflector->getMethods(
-            ReflectionMethod::IS_STATIC |
-            ReflectionMethod::IS_PUBLIC
-        );
-
-        $map_types = [];
-
-        foreach ($methods as $reflector) {
-            if (is_a($reflector->getName(), Throwable::class, true)) {
-                $docblock = $reflector->getDocComment();
-
-                if (
-                    is_string($docblock) &&
-                    self::REGEX_MATCH === preg_match(
-                        '/\* @throws ([^\ ]+).+[\r\n]/',
-                        $docblock,
-                        $matches
-                    ) &&
-                    $reflector->getName() === $matches[self::ARG_SECOND]
-                ) {
-                    /**
-                    * @psalm-var class-string<Throwable>
-                    */
-                    $type = $matches[self::ARG_SECOND];
-
-                    $map_types[$type] = $reflector;
-                }
-            }
-        }
-
-        unset($map_types[Exception::class]);
-
-        return $map_types;
-    }
-
     public function DataProviderTestFactoryMethod() : Generator
     {
         $map_types = static::MapTypesToReflectors();
@@ -242,6 +200,48 @@ class SprintfExceptionFactoryTest extends TestCase
             $previousMessage,
             $previousCode
         );
+    }
+
+    /**
+    * @return array<class-string<Throwable>, ReflectionMethod>
+    */
+    protected static function MapTypesToReflectors() : array
+    {
+        $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
+
+        $methods = $factory_reflector->getMethods(
+            ReflectionMethod::IS_STATIC |
+            ReflectionMethod::IS_PUBLIC
+        );
+
+        $map_types = [];
+
+        foreach ($methods as $reflector) {
+            if (is_a($reflector->getName(), Throwable::class, true)) {
+                $docblock = $reflector->getDocComment();
+
+                if (
+                    is_string($docblock) &&
+                    self::REGEX_MATCH === preg_match(
+                        '/\* @throws ([^\ ]+).+[\r\n]/',
+                        $docblock,
+                        $matches
+                    ) &&
+                    $reflector->getName() === $matches[self::ARG_SECOND]
+                ) {
+                    /**
+                    * @psalm-var class-string<Throwable>
+                    */
+                    $type = $matches[self::ARG_SECOND];
+
+                    $map_types[$type] = $reflector;
+                }
+            }
+        }
+
+        unset($map_types[Exception::class]);
+
+        return $map_types;
     }
 
     /**
