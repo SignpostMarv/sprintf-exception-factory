@@ -138,7 +138,10 @@ class SprintfExceptionFactoryTest extends TestCase
         );
     }
 
-    public function DataProviderTestFactoryMethod() : Generator
+    /**
+    * @return array<class-string<Throwable>, ReflectionMethod>
+    */
+    protected static function MapTypesToReflectors() : array
     {
         $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
 
@@ -162,12 +165,24 @@ class SprintfExceptionFactoryTest extends TestCase
                     ) &&
                     $reflector->getName() === $matches[self::ARG_SECOND]
                 ) {
-                    $map_types[$matches[self::ARG_SECOND]] = $reflector;
+                    /**
+                    * @psalm-var class-string<Throwable>
+                    */
+                    $type = $matches[self::ARG_SECOND];
+
+                    $map_types[$type] = $reflector;
                 }
             }
         }
 
         unset($map_types[Exception::class]);
+
+        return $map_types;
+    }
+
+    public function DataProviderTestFactoryMethod() : Generator
+    {
+        $map_types = static::MapTypesToReflectors();
 
         foreach ($this->DataProviderException() as $args) {
             if (isset($map_types[$args[self::ARG_SECOND]])) {
