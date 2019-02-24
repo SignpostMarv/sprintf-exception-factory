@@ -19,8 +19,8 @@
     <PossiblyUnusedMethod occurrences="1">
       <code>public function test_Paranoid_DataProviderInvalidArgumentException()</code>
     </PossiblyUnusedMethod>
-    <RedundantCondition occurrences="1">
-      <code>assertInstanceOf</code>
-    </RedundantCondition>
+    <PossiblyUnusedParam occurrences="1">
+      <code>$type</code>
+    </PossiblyUnusedParam>
   </file>
 </files>
