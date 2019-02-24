@@ -25,7 +25,6 @@
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
       <directory suffix=".php">./src/</directory>
-      <directory suffix=".php">./Tests/</directory>
     </whitelist>
   </filter>
 </phpunit>
