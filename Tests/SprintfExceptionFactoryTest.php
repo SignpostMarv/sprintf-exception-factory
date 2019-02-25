@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\SprintfExceptionFactory\Tests;
 
+use BadMethodCallException;
 use Exception;
 use Generator;
 use InvalidArgumentException;
@@ -55,6 +56,18 @@ class SprintfExceptionFactoryTest extends TestCase
             [
                 'foo bar',
                 RuntimeException::class,
+                'foo %s',
+                [
+                    'bar',
+                ],
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
+                null,
+                '',
+                SprintfExceptionFactory::DEFAULT_INT_CODE,
+            ],
+            [
+                'foo bar',
+                BadMethodCallException::class,
                 'foo %s',
                 [
                     'bar',
