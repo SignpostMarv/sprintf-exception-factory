@@ -215,10 +215,7 @@ class SprintfExceptionFactoryTest extends TestCase
         );
     }
 
-    /**
-    * @return array<class-string<Throwable>, ReflectionMethod>
-    */
-    protected static function MapTypesToReflectors() : array
+    protected static function YieldMethodsMatchingThrowable() : Generator
     {
         $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
 
@@ -227,10 +224,21 @@ class SprintfExceptionFactoryTest extends TestCase
             ReflectionMethod::IS_PUBLIC
         );
 
-        $map_types = [];
-
         foreach ($methods as $reflector) {
             if (is_a($reflector->getName(), Throwable::class, true)) {
+                yield $method;
+            }
+        }
+    }
+
+    /**
+    * @return array<class-string<Throwable>, ReflectionMethod>
+    */
+    protected static function MapTypesToReflectors() : array
+    {
+        $map_types = [];
+
+        foreach ($this->YieldMethodsMatchingThrowable() as $reflector) {
                 $docblock = $reflector->getDocComment();
 
                 if (
@@ -249,7 +257,6 @@ class SprintfExceptionFactoryTest extends TestCase
 
                     $map_types[$type] = $reflector;
                 }
-            }
         }
 
         unset($map_types[Exception::class]);
