@@ -215,6 +215,9 @@ class SprintfExceptionFactoryTest extends TestCase
         );
     }
 
+    /**
+    * @return Generator<int, ReflectionMethod, mixed, void>
+    */
     protected static function YieldMethodsMatchingThrowable() : Generator
     {
         $factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
@@ -236,6 +239,9 @@ class SprintfExceptionFactoryTest extends TestCase
     */
     protected static function MapTypesToReflectors() : array
     {
+        /**
+        * @var array<class-string<Throwable>, ReflectionMethod>
+        */
         $map_types = [];
 
         foreach (static::YieldMethodsMatchingThrowable() as $reflector) {
