@@ -239,24 +239,24 @@ class SprintfExceptionFactoryTest extends TestCase
         $map_types = [];
 
         foreach ($this->YieldMethodsMatchingThrowable() as $reflector) {
-                $docblock = $reflector->getDocComment();
+            $docblock = $reflector->getDocComment();
 
-                if (
-                    is_string($docblock) &&
-                    self::REGEX_MATCH === preg_match(
-                        '/\* @throws ([^\ ]+).+[\r\n]/',
-                        $docblock,
-                        $matches
-                    ) &&
-                    $reflector->getName() === $matches[self::ARG_SECOND]
-                ) {
-                    /**
-                    * @psalm-var class-string<Throwable>
-                    */
-                    $type = $matches[self::ARG_SECOND];
+            if (
+                is_string($docblock) &&
+                self::REGEX_MATCH === preg_match(
+                    '/\* @throws ([^\ ]+).+[\r\n]/',
+                    $docblock,
+                    $matches
+                ) &&
+                $reflector->getName() === $matches[self::ARG_SECOND]
+            ) {
+                /**
+                * @psalm-var class-string<Throwable>
+                */
+                $type = $matches[self::ARG_SECOND];
 
-                    $map_types[$type] = $reflector;
-                }
+                $map_types[$type] = $reflector;
+            }
         }
 
         unset($map_types[Exception::class]);
