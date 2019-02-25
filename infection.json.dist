@@ -18,6 +18,7 @@
         },
         "Coalesce": {
             "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::BadMethodCallException",
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::RuntimeException"
             ]
         },
@@ -85,6 +86,7 @@
         },
         "PublicVisibility": {
             "ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::BadMethodCallException",
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",

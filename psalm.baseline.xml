@@ -20,7 +20,8 @@
     </RedundantCondition>
   </file>
   <file src="src\SprintfExceptionFactory.php">
-    <PossiblyUnusedMethod occurrences="1">
+    <PossiblyUnusedMethod occurrences="2">
+      <code>public static function BadMethodCallException(</code>
       <code>public static function RuntimeException(</code>
     </PossiblyUnusedMethod>
   </file>

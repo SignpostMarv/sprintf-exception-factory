@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\SprintfExceptionFactory;
 
+use BadMethodCallException;
 use Exception;
 use InvalidArgumentException;
 use RuntimeException;
@@ -27,7 +28,9 @@ abstract class SprintfExceptionFactory
     *
     * @throws InvalidArgumentException if $type is not an implementation of $expected
     *
-    * @return T
+    * @return Exception
+    *
+    * @psalm-return T
     */
     public static function Exception(
         ? string $type,
@@ -54,6 +57,43 @@ abstract class SprintfExceptionFactory
     }
 
     /**
+    * @template T as BadMethodCallException
+    *
+    * @psalm-param T::class|null $type
+    *
+    * @param scalar ...$args
+    *
+    * @throws BadMethodCallException if $type is not an BadMethodCallException implementation
+    *
+    * @return BadMethodCallException
+    *
+    * @psalm-return T
+    */
+    public static function BadMethodCallException(
+        ? string $type,
+        int $code = self::DEFAULT_INT_CODE,
+        Throwable $previous = null,
+        string $sprintf = '%s',
+        ...$args
+    ) : BadMethodCallException {
+        /**
+        * @var BadMethodCallException
+        *
+        * @psalm-var T
+        */
+        $out = static::Exception(
+            $type ?? BadMethodCallException::class,
+            $code,
+            $previous,
+            BadMethodCallException::class,
+            $sprintf,
+            ...$args
+        );
+
+        return $out;
+    }
+
+    /**
     * @template T as InvalidArgumentException
     *
     * @psalm-param T::class|null $type
@@ -62,7 +102,9 @@ abstract class SprintfExceptionFactory
     *
     * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
     *
-    * @return T
+    * @return InvalidArgumentException
+    *
+    * @psalm-return T
     */
     public static function InvalidArgumentException(
         ? string $type,
@@ -71,7 +113,12 @@ abstract class SprintfExceptionFactory
         string $sprintf = '%s',
         ...$args
     ) : InvalidArgumentException {
-        return static::Exception(
+        /**
+        * @var InvalidArgumentException
+        *
+        * @psalm-var T
+        */
+        $out = static::Exception(
             $type ?? InvalidArgumentException::class,
             $code,
             $previous,
@@ -79,6 +126,8 @@ abstract class SprintfExceptionFactory
             $sprintf,
             ...$args
         );
+
+        return $out;
     }
 
     /**
@@ -90,7 +139,9 @@ abstract class SprintfExceptionFactory
     *
     * @throws RuntimeException if $type is not an RuntimeException implementation
     *
-    * @return T
+    * @return RuntimeException
+    *
+    * @psalm-return T
     */
     public static function RuntimeException(
         ? string $type,
@@ -99,7 +150,12 @@ abstract class SprintfExceptionFactory
         string $sprintf = '%s',
         ...$args
     ) : RuntimeException {
-        return static::Exception(
+        /**
+        * @var RuntimeException
+        *
+        * @psalm-var T
+        */
+        $out = static::Exception(
             $type ?? RuntimeException::class,
             $code,
             $previous,
@@ -107,6 +163,8 @@ abstract class SprintfExceptionFactory
             $sprintf,
             ...$args
         );
+
+        return $out;
     }
 
     /**
