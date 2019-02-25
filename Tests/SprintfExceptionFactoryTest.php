@@ -226,7 +226,7 @@ class SprintfExceptionFactoryTest extends TestCase
 
         foreach ($methods as $reflector) {
             if (is_a($reflector->getName(), Throwable::class, true)) {
-                yield $method;
+                yield $reflector;
             }
         }
     }
@@ -238,7 +238,7 @@ class SprintfExceptionFactoryTest extends TestCase
     {
         $map_types = [];
 
-        foreach ($this->YieldMethodsMatchingThrowable() as $reflector) {
+        foreach (static::YieldMethodsMatchingThrowable() as $reflector) {
             $docblock = $reflector->getDocComment();
 
             if (
