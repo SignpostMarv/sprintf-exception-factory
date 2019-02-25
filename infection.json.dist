@@ -13,7 +13,7 @@
         "@default": true,
         "BitwiseOr": {
             "ignore": [
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MapTypesToReflectors"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::YieldMethodsMatchingThrowable"
             ]
         },
         "Coalesce": {
@@ -30,7 +30,8 @@
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MapTypesToReflectors",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::YieldMethodsMatchingThrowable"
             ]
         },
         "FunctionCallRemoval": {
@@ -81,13 +82,15 @@
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MapTypesToReflectors",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MaybeObtainThrowable",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::YieldMethodsMatchingThrowable"
             ]
         },
         "PublicVisibility": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::BadMethodCallException",
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::ExpectArgumentIsException",
+                "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::RuntimeException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
