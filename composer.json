@@ -26,7 +26,7 @@
         "tests": [
             "phpunit",
             "infection --min-msi=100",
-            "psalm --find-dead-code",
+            "psalm --find-dead-code --shepherd",
             "phpcpd -vvv ./src/ ./Tests/",
             "phpmnd ./ --exclude-path=./vendor/ --exclude-path=./coverage/",
             "composer-require-checker check ./composer.json",
