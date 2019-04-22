@@ -298,7 +298,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
-            static::assertInstanceOf($type, $result);
+        static::assertInstanceOf($type, $result);
         static::assertSame($expectedMessage, $result->getMessage());
         static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
         static::assertSame($code, $result->getCode());
