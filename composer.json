@@ -41,13 +41,13 @@
     },
     "require-dev": {
         "infection/infection": "^0.12.2",
-        "maglnet/composer-require-checker": "^1.1",
+        "maglnet/composer-require-checker": "^2.0",
         "phpunit/phpunit": "^7.5",
         "povils/phpmnd": "^2.1",
-        "psalm/plugin-phpunit": "^0.4.1",
+        "psalm/plugin-phpunit": "^0.5.4",
         "roave/security-advisories": "dev-master",
         "sebastian/phpcpd": "^4.1",
         "signpostmarv/php-cs-fixer-config": "^0.9.0",
-        "vimeo/psalm": "^3.0"
+        "vimeo/psalm": "^3.2"
     }
 }
