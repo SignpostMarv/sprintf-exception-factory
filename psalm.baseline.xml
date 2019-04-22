@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
-  <file src="Tests\InvalidArgumentExceptionTest.php">
-    <PossiblyUnusedMethod occurrences="2">
-      <code>public function DataProviderInvalidArgumentExceptionBad() : Generator</code>
-      <code>public function testInvalidArgumentException(</code>
-    </PossiblyUnusedMethod>
-    <TypeCoercion occurrences="1">
-      <code>Exception::class</code>
-    </TypeCoercion>
-  </file>
-  <file src="Tests\SprintfExceptionFactoryTest.php">
-    <PossiblyUnusedMethod occurrences="3">
-      <code>public function test_Paranoid_DataProviderInvalidArgumentException()</code>
-      <code>public function DataProviderTestFactoryMethod() : Generator</code>
-      <code>public function testFactoryMethod(</code>
-    </PossiblyUnusedMethod>
-    <RedundantCondition occurrences="1">
-      <code>assertInstanceOf</code>
-    </RedundantCondition>
-  </file>
   <file src="src\SprintfExceptionFactory.php">
     <PossiblyUnusedMethod occurrences="2">
-      <code>public static function BadMethodCallException(</code>
-      <code>public static function RuntimeException(</code>
+      <code>BadMethodCallException</code>
+      <code>RuntimeException</code>
     </PossiblyUnusedMethod>
   </file>
 </files>
