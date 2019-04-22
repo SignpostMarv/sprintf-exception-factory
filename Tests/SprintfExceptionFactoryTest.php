@@ -24,7 +24,7 @@ class SprintfExceptionFactoryTest extends TestCase
     const REGEX_MATCH = 1;
 
     /**
-    * @psalm-return array<int, array{0:string, 1:class-string<\Exception>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
+    * @psalm-return array<int, array{0:string, 1:class-string<\Exception>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
     */
     public function DataProviderException() : array
     {
@@ -81,14 +81,14 @@ class SprintfExceptionFactoryTest extends TestCase
     }
 
     /**
-    * @psalm-return Generator<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+    * @psalm-return Generator<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
     */
     public function DataProviderInvalidArgumentException() : Generator
     {
         foreach ($this->DataProviderException() as $args) {
             if (is_a($args[self::ARG_SECOND], InvalidArgumentException::class, true)) {
                 /**
-                * @var array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, scalar>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
+                * @var array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
                 */
                 $args = $args;
 
@@ -108,7 +108,7 @@ class SprintfExceptionFactoryTest extends TestCase
     * @psalm-param class-string<Exception> $type
     * @psalm-param class-string<Throwable>|null $previousType
     *
-    * @param array<int, scalar> $args
+    * @param array<int, string|int|float> $args
     *
     * @dataProvider DataProviderInvalidArgumentException
     */
@@ -151,6 +151,9 @@ class SprintfExceptionFactoryTest extends TestCase
         );
     }
 
+    /**
+    * @psalm-return Generator<int, array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}, mixed, void>
+    */
     public function DataProviderTestFactoryMethod() : Generator
     {
         $map_types = static::MapTypesToReflectors();
@@ -158,6 +161,11 @@ class SprintfExceptionFactoryTest extends TestCase
         foreach ($this->DataProviderException() as $args) {
             if (isset($map_types[$args[self::ARG_SECOND]])) {
                 array_unshift($args, $map_types[$args[self::ARG_SECOND]]);
+
+                /**
+                * @var array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}
+                */
+                $args = $args;
 
                 yield $args;
             }
@@ -168,7 +176,7 @@ class SprintfExceptionFactoryTest extends TestCase
     * @psalm-param class-string<Exception> $type
     * @psalm-param class-string<Throwable>|null $previousType
     *
-    * @param array<int, scalar> $args
+    * @param array<int, string|int|float> $args
     *
     * @dataProvider DataProviderTestFactoryMethod
     */
@@ -271,10 +279,12 @@ class SprintfExceptionFactoryTest extends TestCase
     }
 
     /**
-    * @psalm-param class-string<Throwable> $type
+    * @template T as Throwable
+    *
+    * @psalm-param class-string<T> $type
     * @psalm-param class-string<Throwable>|null $previousType
     *
-    * @param array<int, scalar> $args
+    * @param array<int, string|int|float> $args
     */
     protected function PerformAssertions(
         Throwable $result,
@@ -288,9 +298,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
     ) {
-        if (Throwable::class !== $type) {
             static::assertInstanceOf($type, $result);
-        }
         static::assertSame($expectedMessage, $result->getMessage());
         static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
         static::assertSame($code, $result->getCode());
