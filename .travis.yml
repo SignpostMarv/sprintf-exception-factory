@@ -7,6 +7,9 @@ matrix:
     - php: 7.2
     - php: 7.3.0
     - php: 7.3
+    - php: 7.3
+      env:
+        - xdebug=yes
   fast_finish: true
 cache:
   files:
@@ -14,7 +17,11 @@ cache:
     - ./.php_cs.cache
   directories:
     - ./vendor/
+before_script:
+  - if [[ "$xdebug" != "yes" ]]; then phpenv config-rm xdebug.ini; fi
 install:
   - travis_retry composer install --no-interaction --no-suggest --prefer-source
 script:
-  - composer run tests
+  - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/phpunit; else ./vendor/bin/phpunit --no-coverage; fi
+  - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/infection --min-msi=100; fi
+  - composer run static-analysis
