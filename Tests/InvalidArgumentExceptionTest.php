@@ -15,8 +15,8 @@ use Throwable;
 class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 {
 	/**
-	* @psalm-return Generator<int, array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
-	*/
+	 * @psalm-return Generator<int, array{0:string, 1:class-string<Exception>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+	 */
 	public function DataProviderInvalidArgumentExceptionBad() : Generator
 	{
 		foreach ($this->DataProviderException() as $args) {
@@ -27,13 +27,13 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 	}
 
 	/**
-	* @psalm-param class-string<InvalidArgumentException> $type
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @param array<int, string|int|float> $args
-	*
-	* @dataProvider DataProviderInvalidArgumentException
-	*/
+	 * @psalm-param class-string<InvalidArgumentException> $type
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @param array<int, string|int|float> $args
+	 *
+	 * @dataProvider DataProviderInvalidArgumentException
+	 */
 	public function test_invalid_argument_exception(
 		string $expectedMessage,
 		string $type,
@@ -91,13 +91,13 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 	}
 
 	/**
-	* @psalm-param class-string<Throwable> $type
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @param array<int, string|int|float> $args
-	*
-	* @dataProvider DataProviderInvalidArgumentExceptionBad
-	*/
+	 * @psalm-param class-string<Throwable> $type
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @param array<int, string|int|float> $args
+	 *
+	 * @dataProvider DataProviderInvalidArgumentExceptionBad
+	 */
 	public function test_invalid_argument_exception_fails(
 		string $expectedMessage,
 		string $type,
@@ -124,8 +124,8 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 		);
 
 		/**
-		* @psalm-var class-string<InvalidArgumentException>
-		*/
+		 * @psalm-var class-string<InvalidArgumentException>
+		 */
 		$type = $type;
 
 		SprintfExceptionFactory::InvalidArgumentException(
