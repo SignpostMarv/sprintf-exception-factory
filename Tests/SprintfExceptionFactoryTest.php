@@ -87,11 +87,6 @@ class SprintfExceptionFactoryTest extends TestCase
     {
         foreach ($this->DataProviderException() as $args) {
             if (is_a($args[self::ARG_SECOND], InvalidArgumentException::class, true)) {
-                /**
-                * @var array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}
-                */
-                $args = $args;
-
                 yield $args;
             }
         }
