@@ -43,9 +43,9 @@
         "php": "^7.4"
     },
     "require-dev": {
-        "infection/infection": "^0.13.6",
+        "infection/infection": "^0.15.2",
         "maglnet/composer-require-checker": "^2.0",
-        "phpunit/phpunit": "^7.5",
+        "phpunit/phpunit": "^8.5",
         "povils/phpmnd": "^2.2",
         "psalm/plugin-phpunit": "^0.8.1",
         "roave/security-advisories": "dev-master",
