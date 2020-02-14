@@ -109,7 +109,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousType = null,
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
-    ) {
+    ) : void {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
         if (is_null($previousType)) {
@@ -178,7 +178,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousType = null,
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
-    ) {
+    ) : void {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
         if (is_null($previousType)) {
@@ -285,7 +285,7 @@ class SprintfExceptionFactoryTest extends TestCase
         string $previousType = null,
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
-    ) {
+    ) : void {
         static::assertInstanceOf($type, $result);
         static::assertSame($expectedMessage, $result->getMessage());
         static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
