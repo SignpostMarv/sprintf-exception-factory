@@ -1,0 +1,20 @@
+language: php
+php:
+  - 7.1.3
+  - 7.1
+  - 7.2.0
+  - 7.2
+  - 7.3.0
+  - 7.3
+cache:
+  files:
+    - ./phpunit.cache
+    - ./.php_cs.cache
+  directories:
+    - ./vendor/
+install:
+  - travis_retry composer install --no-interaction --no-suggest --prefer-source
+script:
+  - composer run tests
+matrix:
+  fast_finish: true
