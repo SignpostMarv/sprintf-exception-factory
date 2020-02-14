@@ -21,3 +21,5 @@ script:
   - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/phpunit --coverage-clover=./phpunit.clover && ./vendor/bin/php-coveralls --no-interaction -vvv; else ./vendor/bin/phpunit --no-coverage; fi
   - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/infection --min-msi=100; fi
   - if [[ "$xdebug" != "yes" ]]; then composer run static-analysis; fi
+after_script:
+  - if [[ "$xdebug" = "yes" ]]; then cat infection.log; fi
