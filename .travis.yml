@@ -20,4 +20,4 @@ install:
 script:
   - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/phpunit; else ./vendor/bin/phpunit --no-coverage; fi
   - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/infection --min-msi=100; fi
-  - composer run static-analysis
+  - if [[ "$xdebug" != "yes" ]]; then composer run static-analysis; fi
