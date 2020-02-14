@@ -26,6 +26,9 @@
         "tests": [
             "phpunit",
             "infection --min-msi=100",
+            "@static-analysis"
+        ],
+        "static-analysis": [
             "psalm --find-dead-code --shepherd",
             "phpcpd -vvv ./src/ ./Tests/",
             "phpmnd ./ --exclude-path=./vendor/ --exclude-path=./coverage/",
