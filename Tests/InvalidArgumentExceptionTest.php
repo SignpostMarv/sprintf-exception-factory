@@ -67,7 +67,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 			$previousCode
 		);
 
-		$this->testException(
+		$this->test_exception(
 			$expectedMessage,
 			$type,
 			$sprintf,
@@ -78,7 +78,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
 			$previousCode
 		);
 
-		$this->testInvalidArgumentExceptionFails(
+		$this->test_invalid_argument_exception_fails(
 			$expectedMessage,
 			Exception::class,
 			$sprintf,
