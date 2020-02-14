@@ -29,7 +29,7 @@
             "@static-analysis"
         ],
         "static-analysis": [
-            "psalm --find-dead-code --shepherd",
+            "psalm --show-info=false --shepherd",
             "phpcpd -vvv ./src/ ./Tests/",
             "phpmnd ./ --exclude-path=./vendor/ --exclude-path=./coverage/",
             "composer-require-checker check ./composer.json",
