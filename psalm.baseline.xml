@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files>
-  <file src="src\SprintfExceptionFactory.php">
-    <PossiblyUnusedMethod occurrences="2">
-      <code>BadMethodCallException</code>
-      <code>RuntimeException</code>
-    </PossiblyUnusedMethod>
-  </file>
-</files>
+<files psalm-version="3.8.5@e6ec5fa22a7b9e61670a24d07b3119aff80dcd89"/>
