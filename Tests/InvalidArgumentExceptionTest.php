@@ -43,7 +43,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
         string $previousType = null,
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
-    ) {
+    ) : void {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
         $result = SprintfExceptionFactory::InvalidArgumentException(
@@ -107,7 +107,7 @@ class InvalidArgumentExceptionTest extends SprintfExceptionFactoryTest
         string $previousType = null,
         string $previousMessage = '',
         int $previousCode = SprintfExceptionFactory::DEFAULT_INT_CODE
-    ) {
+    ) : void {
         $previous = static::MaybeObtainThrowable($previousType, $previousMessage, $previousCode);
 
         static::assertSame($expectedMessage, sprintf($sprintf, ...$args));
