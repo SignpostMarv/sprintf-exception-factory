@@ -19,17 +19,17 @@ abstract class SprintfExceptionFactory
 	const IS_A_STRINGS = true;
 
 	/**
-	* @template T as Exception
-	*
-	* @psalm-param T::class|null $type
-	* @psalm-param T::class $expected
-	*
-	* @param string|int|float ...$args
-	*
-	* @throws InvalidArgumentException if $type is not an implementation of $expected
-	*
-	* @psalm-return T
-	*/
+	 * @template T as Exception
+	 *
+	 * @psalm-param T::class|null $type
+	 * @psalm-param T::class $expected
+	 *
+	 * @param string|int|float ...$args
+	 *
+	 * @throws InvalidArgumentException if $type is not an implementation of $expected
+	 *
+	 * @psalm-return T
+	 */
 	public static function Exception(
 		? string $type,
 		int $code = self::DEFAULT_INT_CODE,
@@ -39,8 +39,8 @@ abstract class SprintfExceptionFactory
 		...$args
 	) : Exception {
 		/**
-		* @psalm-var class-string<Exception>
-		*/
+		 * @psalm-var class-string<Exception>
+		 */
 		$type = $type ?? Exception::class;
 
 		if ( ! is_a($type, $expected, self::IS_A_STRINGS)) {
@@ -52,16 +52,16 @@ abstract class SprintfExceptionFactory
 	}
 
 	/**
-	* @template T as BadMethodCallException
-	*
-	* @psalm-param T::class|null $type
-	*
-	* @param string|int|float ...$args
-	*
-	* @throws BadMethodCallException if $type is not an BadMethodCallException implementation
-	*
-	* @psalm-return T
-	*/
+	 * @template T as BadMethodCallException
+	 *
+	 * @psalm-param T::class|null $type
+	 *
+	 * @param string|int|float ...$args
+	 *
+	 * @throws BadMethodCallException if $type is not an BadMethodCallException implementation
+	 *
+	 * @psalm-return T
+	 */
 	public static function BadMethodCallException(
 		? string $type,
 		int $code = self::DEFAULT_INT_CODE,
@@ -70,15 +70,15 @@ abstract class SprintfExceptionFactory
 		...$args
 	) : BadMethodCallException {
 		/**
-		* @psalm-var class-string<BadMethodCallException>
-		*/
+		 * @psalm-var class-string<BadMethodCallException>
+		 */
 		$new_type = $type ?? BadMethodCallException::class;
 
 		/**
-		* @var BadMethodCallException
-		*
-		* @psalm-var T
-		*/
+		 * @var BadMethodCallException
+		 *
+		 * @psalm-var T
+		 */
 		$out = static::Exception(
 			$new_type,
 			$code,
@@ -92,16 +92,16 @@ abstract class SprintfExceptionFactory
 	}
 
 	/**
-	* @template T as InvalidArgumentException
-	*
-	* @psalm-param T::class|null $type
-	*
-	* @param string|int|float ...$args
-	*
-	* @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
-	*
-	* @psalm-return T
-	*/
+	 * @template T as InvalidArgumentException
+	 *
+	 * @psalm-param T::class|null $type
+	 *
+	 * @param string|int|float ...$args
+	 *
+	 * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
+	 *
+	 * @psalm-return T
+	 */
 	public static function InvalidArgumentException(
 		? string $type,
 		int $code = self::DEFAULT_INT_CODE,
@@ -110,15 +110,15 @@ abstract class SprintfExceptionFactory
 		...$args
 	) : InvalidArgumentException {
 		/**
-		* @psalm-var class-string<InvalidArgumentException>
-		*/
+		 * @psalm-var class-string<InvalidArgumentException>
+		 */
 		$new_type = $type ?? InvalidArgumentException::class;
 
 		/**
-		* @var InvalidArgumentException
-		*
-		* @psalm-var T
-		*/
+		 * @var InvalidArgumentException
+		 *
+		 * @psalm-var T
+		 */
 		$out = static::Exception(
 			$new_type,
 			$code,
@@ -132,16 +132,16 @@ abstract class SprintfExceptionFactory
 	}
 
 	/**
-	* @template T as RuntimeException
-	*
-	* @psalm-param T::class|null $type
-	*
-	* @param string|int|float ...$args
-	*
-	* @throws RuntimeException if $type is not an RuntimeException implementation
-	*
-	* @psalm-return T
-	*/
+	 * @template T as RuntimeException
+	 *
+	 * @psalm-param T::class|null $type
+	 *
+	 * @param string|int|float ...$args
+	 *
+	 * @throws RuntimeException if $type is not an RuntimeException implementation
+	 *
+	 * @psalm-return T
+	 */
 	public static function RuntimeException(
 		? string $type,
 		int $code = self::DEFAULT_INT_CODE,
@@ -150,15 +150,15 @@ abstract class SprintfExceptionFactory
 		...$args
 	) : RuntimeException {
 		/**
-		* @psalm-var class-string<RuntimeException>
-		*/
+		 * @psalm-var class-string<RuntimeException>
+		 */
 		$new_type = $type ?? RuntimeException::class;
 
 		/**
-		* @var RuntimeException
-		*
-		* @psalm-var T
-		*/
+		 * @var RuntimeException
+		 *
+		 * @psalm-var T
+		 */
 		$out = static::Exception(
 			$new_type,
 			$code,
@@ -172,12 +172,12 @@ abstract class SprintfExceptionFactory
 	}
 
 	/**
-	* Since we pass null to static::InvalidArgumentException($type) then
-	*  static::Exception() receives class-string<InvalidArgumentException> by default,
-	*  so @throws is only a technicality.
-	*
-	* @throws InvalidArgumentException but not really
-	*/
+	 * Since we pass null to static::InvalidArgumentException($type) then
+	 *  static::Exception() receives class-string<InvalidArgumentException> by default,
+	 *  so @throws is only a technicality.
+	 *
+	 * @throws InvalidArgumentException but not really
+	 */
 	public static function ExpectArgumentIsException(
 		string $type,
 		string $expected,
