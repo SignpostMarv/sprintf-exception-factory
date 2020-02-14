@@ -11,6 +11,17 @@
     },
     "mutators": {
         "@default": true,
+		"ArrayItemRemoval": {
+			"ignore": [
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions"
+			]
+		},
+		"ArrayOneItem": {
+			"ignore": [
+				"SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::MapTypesToReflectors"
+			]
+		},
         "BitwiseOr": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::YieldMethodsMatchingThrowable"
@@ -60,12 +71,12 @@
         "MethodCallRemoval": {
             "ignore": [
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_invalid_argument_exception",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_invalid_argument_exception_fails",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_exception",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::PerformAssertions",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testFactoryMethod"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_factory_method"
             ]
         },
         "NotIdentical": {
@@ -93,14 +104,14 @@
                 "SignpostMarv\\SprintfExceptionFactory\\SprintfExceptionFactory::RuntimeException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::DataProviderInvalidArgumentExceptionBad",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_Paranoid_DataProviderInvalidArgumentExceptionBad",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentExceptionFails",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::testInvalidArgumentException",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_invalid_argument_exception_fails",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\InvalidArgumentExceptionTest::test_invalid_argument_exception",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderInvalidArgumentException",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::DataProviderTestFactoryMethod",
                 "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_Paranoid_DataProviderInvalidArgumentException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testException",
-                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::testFactoryMethod"
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_exception",
+                "SignpostMarv\\SprintfExceptionFactory\\Tests\\SprintfExceptionFactoryTest::test_factory_method"
             ]
         }
     }
