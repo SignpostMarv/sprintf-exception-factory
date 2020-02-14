@@ -24,8 +24,8 @@ class SprintfExceptionFactoryTest extends TestCase
 	const REGEX_MATCH = 1;
 
 	/**
-	* @psalm-return array<int, array{0:string, 1:class-string<\Exception>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
-	*/
+	 * @psalm-return array<int, array{0:string, 1:class-string<\Exception>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}>
+	 */
 	public function DataProviderException() : array
 	{
 		return [
@@ -81,8 +81,8 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @psalm-return Generator<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
-	*/
+	 * @psalm-return Generator<int, array{0:string, 1:class-string<InvalidArgumentException>, 2:string, 3:array<int, string|int|float>, 4:int, 5:class-string<Throwable>|null, 6:string, 7:int}, mixed, void>
+	 */
 	public function DataProviderInvalidArgumentException() : Generator
 	{
 		foreach ($this->DataProviderException() as $args) {
@@ -93,13 +93,13 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @psalm-param class-string<Exception> $type
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @param array<int, string|int|float> $args
-	*
-	* @dataProvider DataProviderInvalidArgumentException
-	*/
+	 * @psalm-param class-string<Exception> $type
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @param array<int, string|int|float> $args
+	 *
+	 * @dataProvider DataProviderInvalidArgumentException
+	 */
 	public function test_exception(
 		string $expectedMessage,
 		string $type,
@@ -140,8 +140,8 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @psalm-return Generator<int, array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}, mixed, void>
-	*/
+	 * @psalm-return Generator<int, array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}, mixed, void>
+	 */
 	public function DataProviderTestFactoryMethod() : Generator
 	{
 		$map_types = static::MapTypesToReflectors();
@@ -151,8 +151,8 @@ class SprintfExceptionFactoryTest extends TestCase
 				array_unshift($args, $map_types[$args[self::ARG_SECOND]]);
 
 				/**
-				* @var array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}
-				*/
+				 * @var array{0:ReflectionMethod, 1:string, 2:class-string<\Exception>, 3:string, 4:array<int, string|int|float>, 5:int, 6:class-string<Throwable>|null, 7:string, 8:int}
+				 */
 				$args = $args;
 
 				yield $args;
@@ -161,13 +161,13 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @psalm-param class-string<Exception> $type
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @param array<int, string|int|float> $args
-	*
-	* @dataProvider DataProviderTestFactoryMethod
-	*/
+	 * @psalm-param class-string<Exception> $type
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @param array<int, string|int|float> $args
+	 *
+	 * @dataProvider DataProviderTestFactoryMethod
+	 */
 	public function test_factory_method(
 		ReflectionMethod $reflector,
 		string $expectedMessage,
@@ -186,8 +186,8 @@ class SprintfExceptionFactoryTest extends TestCase
 		}
 
 		/**
-		* @var Throwable
-		*/
+		 * @var Throwable
+		 */
 		$result = $reflector->invoke(
 			null,
 			$type,
@@ -212,8 +212,8 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @return Generator<int, ReflectionMethod, mixed, void>
-	*/
+	 * @return Generator<int, ReflectionMethod, mixed, void>
+	 */
 	protected static function YieldMethodsMatchingThrowable() : Generator
 	{
 		$factory_reflector = new ReflectionClass(SprintfExceptionFactory::class);
@@ -231,13 +231,13 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @return array<class-string<Throwable>, ReflectionMethod>
-	*/
+	 * @return array<class-string<Throwable>, ReflectionMethod>
+	 */
 	protected static function MapTypesToReflectors() : array
 	{
 		/**
-		* @var array<class-string<Throwable>, ReflectionMethod>
-		*/
+		 * @var array<class-string<Throwable>, ReflectionMethod>
+		 */
 		$map_types = [];
 
 		foreach (static::YieldMethodsMatchingThrowable() as $reflector) {
@@ -253,8 +253,8 @@ class SprintfExceptionFactoryTest extends TestCase
 				$reflector->getName() === $matches[self::ARG_SECOND]
 			) {
 				/**
-				* @psalm-var class-string<Throwable>
-				*/
+				 * @psalm-var class-string<Throwable>
+				 */
 				$type = $matches[self::ARG_SECOND];
 
 				$map_types[$type] = $reflector;
@@ -267,13 +267,13 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @template T as Throwable
-	*
-	* @psalm-param class-string<T> $type
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @param array<int, string|int|float> $args
-	*/
+	 * @template T as Throwable
+	 *
+	 * @psalm-param class-string<T> $type
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @param array<int, string|int|float> $args
+	 */
 	protected function PerformAssertions(
 		Throwable $result,
 		Throwable $expectedPrevious = null,
@@ -310,10 +310,10 @@ class SprintfExceptionFactoryTest extends TestCase
 	}
 
 	/**
-	* @psalm-param class-string<Throwable>|null $previousType
-	*
-	* @return Throwable|null
-	*/
+	 * @psalm-param class-string<Throwable>|null $previousType
+	 *
+	 * @return Throwable|null
+	 */
 	protected static function MaybeObtainThrowable(
 		string $previousType = null,
 		string $previousMessage = '',
