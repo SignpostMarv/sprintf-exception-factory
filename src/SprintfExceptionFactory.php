@@ -28,8 +28,6 @@ abstract class SprintfExceptionFactory
     *
     * @throws InvalidArgumentException if $type is not an implementation of $expected
     *
-    * @return Exception
-    *
     * @psalm-return T
     */
     public static function Exception(
@@ -61,8 +59,6 @@ abstract class SprintfExceptionFactory
     * @param string|int|float ...$args
     *
     * @throws BadMethodCallException if $type is not an BadMethodCallException implementation
-    *
-    * @return BadMethodCallException
     *
     * @psalm-return T
     */
@@ -104,8 +100,6 @@ abstract class SprintfExceptionFactory
     *
     * @throws InvalidArgumentException if $type is not an InvalidArgumentException implementation
     *
-    * @return InvalidArgumentException
-    *
     * @psalm-return T
     */
     public static function InvalidArgumentException(
@@ -145,8 +139,6 @@ abstract class SprintfExceptionFactory
     * @param string|int|float ...$args
     *
     * @throws RuntimeException if $type is not an RuntimeException implementation
-    *
-    * @return RuntimeException
     *
     * @psalm-return T
     */
