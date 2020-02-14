@@ -33,7 +33,7 @@
             "phpcpd -vvv ./src/ ./Tests/",
             "phpmnd ./ --exclude-path=./vendor/ --exclude-path=./coverage/",
             "composer-require-checker check ./composer.json",
-            "php-cs-fixer fix --verbose --dry-run"
+            "php-cs-fixer fix --verbose --diff-format=udiff --dry-run"
         ]
     },
     "suggest": {
