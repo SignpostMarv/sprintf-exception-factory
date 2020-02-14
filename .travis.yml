@@ -16,7 +16,7 @@ cache:
     - ./phpunit.cache
     - ./.php_cs.cache
   directories:
-    - ./vendor/
+    - $HOME/.composer/cache
 before_script:
   - if [[ "$xdebug" != "yes" ]]; then phpenv config-rm xdebug.ini; fi
 install:
