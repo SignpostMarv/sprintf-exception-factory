@@ -45,17 +45,11 @@ abstract class SprintfExceptionFactory
         */
         $type = $type ?? Exception::class;
 
-        if ($type !== $expected && ! is_a($type, $expected, self::IS_A_STRINGS)) {
-            throw static::ExpectArgumentIsException(
-                $type,
-                $expected,
-                1,
-                __METHOD__,
-                $code,
-                $previous
-            );
+        if ( ! is_a($type, $expected, self::IS_A_STRINGS)) {
+            throw static::ExpectArgumentIsException($type, $expected, 1, __METHOD__, $code, $previous);
         }
 
+        /** @var T */
         return new $type(sprintf($sprintf, ...$args), $code, $previous);
     }
 
