@@ -97,13 +97,6 @@ class SprintfExceptionFactoryTest extends TestCase
         }
     }
 
-    public function test_Paranoid_DataProviderInvalidArgumentException()
-    {
-        foreach ($this->DataProviderInvalidArgumentException() as $args) {
-            static::assertIsArray($args);
-        }
-    }
-
     /**
     * @psalm-param class-string<Exception> $type
     * @psalm-param class-string<Throwable>|null $previousType
